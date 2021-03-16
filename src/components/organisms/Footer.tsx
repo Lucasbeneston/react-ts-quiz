@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Heart from "../atoms/SVGR/Heart";
+import color from "../../styles/variables";
 
 const Footer = () => {
   return (
@@ -17,8 +18,9 @@ export default Footer;
 // Styles
 const FooterSection = styled.footer`
   align-items: center;
+  color: ${color.offWhite};
   display: flex;
-  height: 30px;
+  height: 50px;
   justify-content: center;
   width: 100%;
 `;

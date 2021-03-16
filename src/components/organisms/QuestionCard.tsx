@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import color from "../../styles/variables";
 
 // Types
 import { AnswerObject } from "../pages/QuizView";
@@ -29,10 +30,11 @@ const QuestionCard: React.FC<Props> = ({
 }) => {
   return (
     <div>
-      <p>
-        Question: {questionNumber} / {totalQuestions}
-      </p>
-      <p dangerouslySetInnerHTML={{ __html: question }} />
+      <QuestionNumber>
+        Question {questionNumber}
+        <TotalQuestions> / {totalQuestions}</TotalQuestions>
+      </QuestionNumber>
+      <Question dangerouslySetInnerHTML={{ __html: question }} />
       <div>
         {answers.map((answer) => (
           <AnswersButton
@@ -52,12 +54,41 @@ const QuestionCard: React.FC<Props> = ({
 
 export default QuestionCard;
 
+const QuestionNumber = styled.p`
+  font-size: 1.8rem;
+  font-weight: 600;
+`;
+
+const TotalQuestions = styled.span`
+  color: ${color.softGrey};
+  font-size: 1.6rem;
+`;
+
+const Question = styled.p`
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 2.6rem;
+  margin: 20px 0;
+`;
+
 const AnswersButton = styled.div<ButtonWrapperProps>`
   button {
     background-color: ${({ correct, userClicked }) =>
-      correct ? "green" : !correct && userClicked ? "red" : "grey"};
-    border-radius: 20px;
-    height: 40px;
+      correct
+        ? color.royalBlue
+        : !correct && userClicked
+        ? color.burningOrange
+        : color.offWhite};
+    border: 1px solid ${color.softGrey};
+    border-radius: 50px;
+    color: ${({ correct, userClicked }) =>
+      correct || userClicked ? color.offWhite : color.anthraciteGray};
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    margin: 5px 0;
+    min-height: 45px;
+    outline: none;
     width: 100%;
   }
 `;

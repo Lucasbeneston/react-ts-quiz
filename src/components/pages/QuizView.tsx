@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { fetchQuizQuestions } from "../../API";
 import styled from "styled-components";
+import color from "../../styles/variables";
 
 // Components
 import QuestionCard from "../organisms/QuestionCard";
+import StartButton from "../atoms/StartButton";
 
 // Types
 import { QuestionState, Difficulty } from "../../API";
@@ -65,11 +67,10 @@ const QuestionsQuiz = () => {
 
   return (
     <QuizContainer>
-      {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-        <button onClick={startQuiz}>Start</button>
-      ) : null}
       {!gameOver ? <p>Score : {score}</p> : null}
+
       {loading && <p>Loading questions ...</p>}
+
       {!loading && !gameOver && (
         <QuestionCard
           questionNumber={number + 1}
@@ -80,11 +81,17 @@ const QuestionsQuiz = () => {
           callback={checkAnswer}
         />
       )}
+
       {!gameOver &&
       !loading &&
       userAnswers.length === number + 1 &&
       number !== TOTAL_QUESTIONS - 1 ? (
-        <button onClick={nextQuestion}>Next question</button>
+        <StartButton onClick={nextQuestion} title="Next question" />
+      ) : // <button onClick={nextQuestion}>Next question</button>
+      null}
+
+      {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
+        <StartButton onClick={startQuiz} title="Start quiz now" />
       ) : null}
     </QuizContainer>
   );
@@ -93,6 +100,11 @@ const QuestionsQuiz = () => {
 export default QuestionsQuiz;
 
 const QuizContainer = styled.div`
+  background-color: ${color.offWhite};
+  border-radius: 20px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
   padding: 5%;
-  min-height: calc(100vh - 80px);
+  margin: 0 7.5%;
+  min-height: calc(100vh - 130px);
+  position: relative;
 `;

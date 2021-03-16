@@ -14,7 +14,7 @@ const base = `
     font-size: 1.4rem;
     font-family: Helvetica, sans-serif;
     color: ${color.anthraciteGray};
-    background-color: ${color.offWhite};
+    background: linear-gradient(${color.scienceBlue}, ${color.purpleHeart});
   }`;
 
 export default base;
