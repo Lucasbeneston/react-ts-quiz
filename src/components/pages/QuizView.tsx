@@ -64,7 +64,6 @@ const QuestionsQuiz = () => {
 
   return (
     <div>
-      <h1>REACT TS QUIZ</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
         <button onClick={startQuiz}>Start</button>
       ) : null}
