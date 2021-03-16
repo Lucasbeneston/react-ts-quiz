@@ -16,11 +16,11 @@ export default Footer;
 
 // Styles
 const FooterSection = styled.footer`
-  width: 100%;
-  height: 30px;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 30px;
   justify-content: center;
+  width: 100%;
 `;
 const Copyright = styled.p`
   font-size: 1.2rem;

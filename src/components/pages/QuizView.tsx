@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { fetchQuizQuestions } from "../../API";
+import styled from "styled-components";
 
 // Components
 import QuestionCard from "../organisms/QuestionCard";
@@ -63,7 +64,7 @@ const QuestionsQuiz = () => {
   };
 
   return (
-    <div>
+    <QuizContainer>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
         <button onClick={startQuiz}>Start</button>
       ) : null}
@@ -85,8 +86,13 @@ const QuestionsQuiz = () => {
       number !== TOTAL_QUESTIONS - 1 ? (
         <button onClick={nextQuestion}>Next question</button>
       ) : null}
-    </div>
+    </QuizContainer>
   );
 };
 
 export default QuestionsQuiz;
+
+const QuizContainer = styled.div`
+  padding: 5%;
+  min-height: calc(100vh - 80px);
+`;
