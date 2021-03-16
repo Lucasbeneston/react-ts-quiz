@@ -55,7 +55,7 @@ const QuestionCard: React.FC<Props> = ({
 export default QuestionCard;
 
 const QuestionNumber = styled.p`
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
 `;
 

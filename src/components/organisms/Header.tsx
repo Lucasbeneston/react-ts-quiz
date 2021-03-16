@@ -5,7 +5,7 @@ import color from "../../styles/variables";
 const Header = () => {
   return (
     <header>
-      <Title>The Super Quiz</Title>
+      <Title> The Super Quiz </Title>
     </header>
   );
 };

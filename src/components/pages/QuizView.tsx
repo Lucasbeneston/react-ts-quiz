@@ -6,6 +6,7 @@ import color from "../../styles/variables";
 // Components
 import QuestionCard from "../organisms/QuestionCard";
 import StartButton from "../atoms/StartButton";
+import ListCategories from "../molecules/ListCategories";
 
 // Types
 import { QuestionState, Difficulty } from "../../API";
@@ -87,11 +88,13 @@ const QuestionsQuiz = () => {
       userAnswers.length === number + 1 &&
       number !== TOTAL_QUESTIONS - 1 ? (
         <StartButton onClick={nextQuestion} title="Next question" />
-      ) : // <button onClick={nextQuestion}>Next question</button>
-      null}
+      ) : null}
 
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-        <StartButton onClick={startQuiz} title="Start quiz now" />
+        <>
+          <ListCategories />
+          <StartButton onClick={startQuiz} title="Start quiz now" />
+        </>
       ) : null}
     </QuizContainer>
   );
@@ -105,6 +108,6 @@ const QuizContainer = styled.div`
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
   padding: 5%;
   margin: 0 7.5%;
-  min-height: calc(100vh - 130px);
+  height: calc(100vh - 130px);
   position: relative;
 `;
