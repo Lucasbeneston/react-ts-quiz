@@ -17,6 +17,7 @@ const Button = styled.button`
   background: ${color.dodgerBlue};
   border: none;
   border-radius: 25px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
   color: ${color.offWhite};
   font-weight: 600;
   height: 45px;
@@ -25,4 +26,8 @@ const Button = styled.button`
   padding: 12px;
   text-transform: uppercase;
   width: 45px;
+
+  &:hover {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  }
 `;

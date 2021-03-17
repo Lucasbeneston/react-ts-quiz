@@ -6,6 +6,7 @@ const color = {
   purpleHeart: "#621eca",
   burningOrange: "#eb5b1e",
   softGrey: "#bababa",
+  extraLightGrey: "#e1dfdc",
   anthraciteGray: "#141414",
 };
 

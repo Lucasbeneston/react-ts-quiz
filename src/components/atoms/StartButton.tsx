@@ -21,14 +21,16 @@ const Button = styled.button`
   );
   border: none;
   border-radius: 25px;
-  bottom: 20px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
   color: ${color.offWhite};
+  flex: 1;
   font-weight: 600;
   height: 45px;
   letter-spacing: 1px;
   outline: none;
-  position: absolute;
-  right: 12.5%;
   text-transform: uppercase;
-  width: 75%;
+
+  &:hover {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  }
 `;

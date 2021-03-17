@@ -6,12 +6,12 @@ import color from "../../styles/variables";
 // Components
 import QuestionCard from "../organisms/QuestionCard";
 import ListCategories from "../molecules/ListCategories";
-import StartButton from "../atoms/StartButton";
-import RoundedButton from "../atoms/RoundedButton";
 
 // Types
 import { QuestionState, Difficulty } from "../../API";
 import ListCategoriesIllustration from "../atoms/SVGR/ListCategoriesIllustration";
+import ButtonContainer from "../molecules/ButtonContainer";
+import RoundedButton from "../atoms/RoundedButton";
 
 export type AnswerObject = {
   question: string;
@@ -94,26 +94,28 @@ const QuestionsQuiz = () => {
       !loading &&
       userAnswers.length === number + 1 &&
       number !== TOTAL_QUESTIONS - 1 ? (
-        <StartButton onClick={nextQuestion} title="Next question" />
+        <ButtonContainer title="Next question" onClick={nextQuestion} />
       ) : null}
 
       {!gameOver &&
       userAnswers.length === TOTAL_QUESTIONS &&
       loading === false ? (
-        <>
-          <RoundedButton
-            onClick={changeCategory}
-            content={<ListCategoriesIllustration />}
-          />
-
-          <StartButton onClick={startQuiz} title="Restart" />
-        </>
+        <ButtonContainer
+          buttonOption={
+            <RoundedButton
+              onClick={changeCategory}
+              content={<ListCategoriesIllustration />}
+            />
+          }
+          title="Restart"
+          onClick={startQuiz}
+        />
       ) : null}
 
       {gameOver && userAnswers.length === 0 ? (
         <>
           <ListCategories />
-          <StartButton onClick={startQuiz} title="Start quiz now" />
+          <ButtonContainer title="Start quiz now" onClick={startQuiz} />
         </>
       ) : null}
     </QuizContainer>

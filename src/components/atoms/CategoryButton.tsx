@@ -21,7 +21,7 @@ const CategoryButton: React.FC<Props> = ({ icon, category }) => {
 export default CategoryButton;
 
 const Container = styled.div`
-  background-color: ${color.softGrey};
+  background-color: ${color.extraLightGrey};
   border-radius: 10px;
   position: relative;
   min-width: 30%;
@@ -31,6 +31,10 @@ const Container = styled.div`
     content: "";
     display: block;
     padding-bottom: 100%;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -51,5 +55,6 @@ const Icon = styled.span`
 
 const Category = styled.h3`
   font-size: 1.4rem;
+  font-weight: 500;
   text-align: center;
 `;
