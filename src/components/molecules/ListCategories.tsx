@@ -11,7 +11,11 @@ const ListCategories = () => {
   return (
     <ListContainer>
       {data.map((category: any) => (
-        <CategoryButton category={category.name} icon={category.icon} />
+        <CategoryButton
+          key={category.name}
+          category={category.name}
+          icon={category.icon}
+        />
       ))}
     </ListContainer>
   );

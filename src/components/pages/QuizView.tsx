@@ -5,11 +5,13 @@ import color from "../../styles/variables";
 
 // Components
 import QuestionCard from "../organisms/QuestionCard";
-import StartButton from "../atoms/StartButton";
 import ListCategories from "../molecules/ListCategories";
+import StartButton from "../atoms/StartButton";
+import RoundedButton from "../atoms/RoundedButton";
 
 // Types
 import { QuestionState, Difficulty } from "../../API";
+import ListCategoriesIllustration from "../atoms/SVGR/ListCategoriesIllustration";
 
 export type AnswerObject = {
   question: string;
@@ -46,7 +48,7 @@ const QuestionsQuiz = () => {
     if (!gameOver) {
       const answer = e.currentTarget.value;
       const correct = questions[number].correct_answer === answer;
-      if (correct) setScore((prev) => prev + 1);
+      if (correct) setScore((prev) => prev + 10);
       const AnswerObject = {
         question: questions[number].question,
         answer,
@@ -64,6 +66,11 @@ const QuestionsQuiz = () => {
     } else {
       setNumber(nextQuestion);
     }
+  };
+
+  const changeCategory = () => {
+    setGameOver(true);
+    setUserAnswers([]);
   };
 
   return (
@@ -90,7 +97,20 @@ const QuestionsQuiz = () => {
         <StartButton onClick={nextQuestion} title="Next question" />
       ) : null}
 
-      {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
+      {!gameOver &&
+      userAnswers.length === TOTAL_QUESTIONS &&
+      loading === false ? (
+        <>
+          <RoundedButton
+            onClick={changeCategory}
+            content={<ListCategoriesIllustration />}
+          />
+
+          <StartButton onClick={startQuiz} title="Restart" />
+        </>
+      ) : null}
+
+      {gameOver && userAnswers.length === 0 ? (
         <>
           <ListCategories />
           <StartButton onClick={startQuiz} title="Start quiz now" />
