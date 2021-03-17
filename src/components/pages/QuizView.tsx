@@ -8,7 +8,7 @@ import QuestionCard from "../organisms/QuestionCard";
 import ListCategories from "../molecules/ListCategories";
 
 // Types
-import { QuestionState, Difficulty } from "../../API";
+import { QuestionState, Category, Difficulty } from "../../API";
 import ListCategoriesIllustration from "../atoms/SVGR/ListCategoriesIllustration";
 import ButtonContainer from "../molecules/ButtonContainer";
 import RoundedButton from "../atoms/RoundedButton";
@@ -35,6 +35,7 @@ const QuestionsQuiz = () => {
     setGameOver(false);
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
+      Category.VIDEOGAME,
       Difficulty.EASY
     );
     setQuestions(newQuestions);

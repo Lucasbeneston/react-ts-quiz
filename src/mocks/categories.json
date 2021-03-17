@@ -1,9 +1,10 @@
 [
+  { "name": "All", "icon": "🔥" },
   { "name": "Animals", "icon": "🦁" },
   { "name": "Anime & Manga", "icon": "🇯🇵" },
-  { "name": "Art", "icon": "🎨" },
   { "name": "Books", "icon": "📚" },
   { "name": "Cartoons", "icon": "🤪" },
+  { "name": "Celebrities", "icon": "👸" },
   { "name": "Comics", "icon": "💥" },
   { "name": "Film", "icon": "🎬" },
   { "name": "General knowledge", "icon": "🧠" },
