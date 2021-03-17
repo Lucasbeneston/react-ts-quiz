@@ -8,7 +8,7 @@ import QuestionCard from "../organisms/QuestionCard";
 import ListCategories from "../molecules/ListCategories";
 
 // Types
-import { QuestionState, Category, Difficulty } from "../../API";
+import { QuestionState, Difficulty } from "../../API";
 import ListCategoriesIllustration from "../atoms/SVGR/ListCategoriesIllustration";
 import ButtonContainer from "../molecules/ButtonContainer";
 import RoundedButton from "../atoms/RoundedButton";
@@ -24,18 +24,21 @@ const TOTAL_QUESTIONS = 10;
 
 const QuestionsQuiz = () => {
   const [loading, setLoading] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("");
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
+  console.log(currentCategory);
+
   const startQuiz = async () => {
     setLoading(true);
     setGameOver(false);
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
-      Category.VIDEOGAME,
+      currentCategory,
       Difficulty.EASY
     );
     setQuestions(newQuestions);
@@ -115,7 +118,11 @@ const QuestionsQuiz = () => {
 
       {gameOver && userAnswers.length === 0 ? (
         <>
-          <ListCategories />
+          <ListCategories
+            onClick={(e) => {
+              setCurrentCategory(e.currentTarget.value);
+            }}
+          />
           <ButtonContainer title="Start quiz now" onClick={startQuiz} />
         </>
       ) : null}

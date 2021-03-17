@@ -7,14 +7,20 @@ import data from "../../mocks/categories.json";
 // Components
 import CategoryButton from "../atoms/CategoryButton";
 
-const ListCategories = () => {
+type Props = {
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+const ListCategories: React.FC<Props> = ({ onClick }) => {
   return (
     <ListContainer>
       {data.map((category: any) => (
         <CategoryButton
+          onClick={onClick}
           key={category.name}
           category={category.name}
           icon={category.icon}
+          categoryId={category.id}
         />
       ))}
     </ListContainer>
