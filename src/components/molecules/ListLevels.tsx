@@ -1,8 +1,6 @@
 import React from "react";
+import data from "../../mocks/levels.json";
 import styled from "styled-components";
-
-// Data
-import data from "../../mocks/categories.json";
 
 // Components
 import SquareButton from "../atoms/SquareButton";
@@ -11,18 +9,18 @@ type Props = {
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const ListCategories: React.FC<Props> = ({ onClick }) => {
+const ListLevels: React.FC<Props> = ({ onClick }) => {
   return (
     <>
-      <Title>... and a gategory</Title>
+      <Title>Choose your level</Title>
       <ListContainer>
-        {data.map((category: any, index: number) => (
+        {data.map((level: any, index: number) => (
           <SquareButton
             onClick={onClick}
-            key={category.name}
-            title={category.name}
-            icon={category.icon}
-            value={category.id}
+            key={level.name}
+            title={level.difficulty}
+            icon={level.icon}
+            value={level.difficulty.toLowerCase()}
             isSelected={index === 0}
           />
         ))}
@@ -31,7 +29,7 @@ const ListCategories: React.FC<Props> = ({ onClick }) => {
   );
 };
 
-export default ListCategories;
+export default ListLevels;
 
 const Title = styled.h3`
   font-size: 1.6rem;
@@ -43,7 +41,7 @@ const Title = styled.h3`
 const ListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: calc(45px + 10%);
+  margin-bottom: 20px;
 
   & > div {
     margin: 1.66%;

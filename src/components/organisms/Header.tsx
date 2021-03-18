@@ -4,22 +4,33 @@ import color from "../../styles/variables";
 
 const Header = () => {
   return (
-    <header>
+    <HeaderContainer>
       <Title> The Super Quiz </Title>
-    </header>
+      <Score>0 🍕</Score>
+    </HeaderContainer>
   );
 };
 
 export default Header;
 
 // Styles
-const Title = styled.h1`
-  align-items: center;
-  color: ${color.offWhite};
-  display: flex;
-  font-weight: 600;
-  justify-content: center;
-  font-size: 2rem;
+const HeaderContainer = styled.header`
   height: 80px;
   width: 100%;
+  padding: 0 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Title = styled.h1`
+  color: ${color.offWhite};
+  font-weight: 600;
+  font-size: 2rem;
+`;
+
+const Score = styled.h2`
+  color: ${color.offWhite};
+  font-weight: 600;
+  font-size: 1.8rem;
 `;

@@ -8,10 +8,11 @@ import QuestionCard from "../organisms/QuestionCard";
 import ListCategories from "../molecules/ListCategories";
 
 // Types
-import { QuestionState, Difficulty } from "../../API";
+import { QuestionState } from "../../API";
 import ListCategoriesIllustration from "../atoms/SVGR/ListCategoriesIllustration";
 import ButtonContainer from "../molecules/ButtonContainer";
 import RoundedButton from "../atoms/RoundedButton";
+import ListLevels from "../molecules/ListLevels";
 
 export type AnswerObject = {
   question: string;
@@ -25,13 +26,12 @@ const TOTAL_QUESTIONS = 10;
 const QuestionsQuiz = () => {
   const [loading, setLoading] = useState(false);
   const [currentCategory, setCurrentCategory] = useState("");
+  const [currentDifficulty, setCurrentDifficulty] = useState("easy");
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
-
-  console.log(currentCategory);
 
   const startQuiz = async () => {
     setLoading(true);
@@ -39,10 +39,9 @@ const QuestionsQuiz = () => {
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
       currentCategory,
-      Difficulty.EASY
+      currentDifficulty
     );
     setQuestions(newQuestions);
-    setScore(0);
     setUserAnswers([]);
     setNumber(0);
     setLoading(false);
@@ -118,11 +117,18 @@ const QuestionsQuiz = () => {
 
       {gameOver && userAnswers.length === 0 ? (
         <>
-          <ListCategories
-            onClick={(e) => {
-              setCurrentCategory(e.currentTarget.value);
-            }}
-          />
+          <Test>
+            <ListLevels
+              onClick={(e) => {
+                setCurrentDifficulty(e.currentTarget.value);
+              }}
+            />
+            <ListCategories
+              onClick={(e) => {
+                setCurrentCategory(e.currentTarget.value);
+              }}
+            />
+          </Test>
           <ButtonContainer title="Start quiz now" onClick={startQuiz} />
         </>
       ) : null}
@@ -136,8 +142,18 @@ const QuizContainer = styled.div`
   background-color: ${color.offWhite};
   border-radius: 20px;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
-  padding: 5%;
-  margin: 0 7.5%;
   height: calc(100vh - 130px);
+  margin: 0 7.5%;
+  padding: 5%;
   position: relative;
+`;
+
+const Test = styled.div`
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  padding: 5%;
+  overflow-y: scroll;
 `;

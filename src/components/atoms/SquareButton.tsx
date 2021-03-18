@@ -4,22 +4,28 @@ import color from "../../styles/variables";
 
 type Props = {
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  isSelected: boolean;
   icon: string;
-  category: string;
-  categoryId: string;
+  title: string;
+  value: string;
+};
+
+type ButtonProps = {
+  active: boolean;
 };
 
 const CategoryButton: React.FC<Props> = ({
   onClick,
+  isSelected,
   icon,
-  category,
-  categoryId,
+  title,
+  value,
 }) => {
   return (
     <Container>
-      <Content onClick={onClick} value={categoryId}>
+      <Content active={isSelected} onClick={onClick} value={value}>
         <Icon>{icon}</Icon>
-        <Category>{category}</Category>
+        <Category>{title}</Category>
       </Content>
     </Container>
   );
@@ -39,11 +45,13 @@ const Container = styled.div`
   }
 `;
 
-const Content = styled.button`
+const Content = styled.button<ButtonProps>`
   align-items: center;
-  background-color: ${color.extraLightGrey};
+  background-color: ${({ active }) =>
+    active ? color.softGrey : color.extraLightGrey};
   border: none;
   border-radius: 10px;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   height: 100%;
