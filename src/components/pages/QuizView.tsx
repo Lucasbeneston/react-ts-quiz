@@ -6,6 +6,7 @@ import color from "../../styles/variables";
 // Components
 import QuestionCard from "../organisms/QuestionCard";
 import ListCategories from "../molecules/ListCategories";
+import Coin from "../atoms/SVGR/Coin";
 
 // Types
 import { QuestionState } from "../../API";
@@ -27,6 +28,7 @@ const QuestionsQuiz = () => {
   const [loading, setLoading] = useState(false);
   const [currentCategory, setCurrentCategory] = useState("");
   const [currentDifficulty, setCurrentDifficulty] = useState("easy");
+  console.log(currentDifficulty);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
@@ -52,7 +54,13 @@ const QuestionsQuiz = () => {
     if (!gameOver) {
       const answer = e.currentTarget.value;
       const correct = questions[number].correct_answer === answer;
-      if (correct) setScore((prev) => prev + 10);
+      if (correct && currentDifficulty === "easy") {
+        setScore((prev) => prev + 10);
+      } else if (correct && currentDifficulty === "medium") {
+        setScore((prev) => prev + 20);
+      } else if (correct && currentDifficulty === "hard") {
+        setScore((prev) => prev + 30);
+      }
       const AnswerObject = {
         question: questions[number].question,
         answer,
@@ -79,7 +87,16 @@ const QuestionsQuiz = () => {
 
   return (
     <QuizContainer>
-      {!gameOver ? <p>Score : {score}</p> : null}
+      {!gameOver ? (
+        <QuestionValue>
+          {currentDifficulty === "easy"
+            ? "10"
+            : currentDifficulty === "medium"
+            ? "20"
+            : "30"}
+          <Coin />
+        </QuestionValue>
+      ) : null}
 
       {loading && <p>Loading questions ...</p>}
 
@@ -118,7 +135,7 @@ const QuestionsQuiz = () => {
 
       {gameOver && userAnswers.length === 0 ? (
         <>
-          <Test>
+          <ScrollContainer>
             <ListLevels
               onClick={(e) => {
                 setCurrentDifficulty(e.currentTarget.value);
@@ -129,7 +146,7 @@ const QuestionsQuiz = () => {
                 setCurrentCategory(e.currentTarget.value);
               }}
             />
-          </Test>
+          </ScrollContainer>
           <ButtonContainer title="Start quiz now" onClick={startQuiz} />
         </>
       ) : null}
@@ -149,7 +166,20 @@ const QuizContainer = styled.div`
   position: relative;
 `;
 
-const Test = styled.div`
+const QuestionValue = styled.span`
+  align-items: center;
+  display: flex;
+  font-size: 1.8rem;
+  position: absolute;
+  right: 5%;
+
+  & svg {
+    height: 2.4rem;
+    margin-left: 5px;
+  }
+`;
+
+const ScrollContainer = styled.div`
   position: absolute;
   width: 100%;
   left: 0;

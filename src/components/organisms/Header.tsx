@@ -3,14 +3,14 @@ import styled from "styled-components";
 import color from "../../styles/variables";
 
 // Components
-import Coin from "../atoms/SVGR/Coin";
+import AllCoins from "../atoms/SVGR/AllCoins";
 
 const Header = () => {
   return (
     <HeaderContainer>
       <Title> The Super Quiz </Title>
       <Score>
-        0 <Coin />
+        0 <AllCoins />
       </Score>
     </HeaderContainer>
   );
@@ -42,7 +42,7 @@ const Score = styled.h2`
   font-size: 1.8rem;
 
   & svg {
-    height: 3rem;
+    height: 3.6rem;
     margin-left: 5px;
   }
 `;

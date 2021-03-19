@@ -55,8 +55,10 @@ const QuestionCard: React.FC<Props> = ({
 export default QuestionCard;
 
 const QuestionNumber = styled.p`
+  border-bottom: 1px solid ${color.extraLightGrey};
   font-size: 2rem;
   font-weight: 600;
+  padding-bottom: 10px;
 `;
 
 const TotalQuestions = styled.span`
