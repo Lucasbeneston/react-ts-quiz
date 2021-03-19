@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import GameInformationsContext from "../../contexts/InformationsGameContext";
 import styled from "styled-components";
 import color from "../../styles/variables";
 
@@ -6,11 +7,14 @@ import color from "../../styles/variables";
 import AllCoins from "../atoms/SVGR/AllCoins";
 
 const Header = () => {
+  const context = useContext(GameInformationsContext);
+  const { gameInformations } = context;
+
   return (
     <HeaderContainer>
       <Title> The Super Quiz </Title>
       <Score>
-        0 <AllCoins />
+        {gameInformations} <AllCoins />
       </Score>
     </HeaderContainer>
   );

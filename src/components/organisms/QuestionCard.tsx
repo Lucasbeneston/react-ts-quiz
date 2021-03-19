@@ -2,14 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import color from "../../styles/variables";
 
-// Types
-import { AnswerObject } from "../pages/QuizView";
-
 type Props = {
   question: string;
   answers: string[];
   callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  userAnswer: AnswerObject | undefined;
+  userAnswer: any;
   questionNumber: number;
   totalQuestions: number;
 };
@@ -85,6 +82,7 @@ const AnswersButton = styled.div<ButtonWrapperProps>`
     border-radius: 50px;
     color: ${({ correct, userClicked }) =>
       correct || userClicked ? color.offWhite : color.anthraciteGray};
+    cursor: pointer;
     font-size: 1.6rem;
     font-weight: 600;
     padding: 10px 20px;
@@ -92,5 +90,9 @@ const AnswersButton = styled.div<ButtonWrapperProps>`
     min-height: 45px;
     outline: none;
     width: 100%;
+
+    &:hover {
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    }
   }
 `;
