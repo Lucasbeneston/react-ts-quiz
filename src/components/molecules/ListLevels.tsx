@@ -12,12 +12,12 @@ type Props = {
 const ListLevels: React.FC<Props> = ({ onClick }) => {
   return (
     <>
-      <Title>Choose your level</Title>
+      <Title>Choose the difficulty</Title>
       <ListContainer>
         {data.map((level: any, index: number) => (
           <SquareButton
             onClick={onClick}
-            key={level.name}
+            key={level.difficulty}
             title={level.difficulty}
             icon={level.icon}
             value={level.difficulty.toLowerCase()}

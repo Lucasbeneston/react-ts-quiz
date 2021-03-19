@@ -2,11 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import color from "../../styles/variables";
 
+// Components
+import Coin from "../atoms/SVGR/Coin";
+
 const Header = () => {
   return (
     <HeaderContainer>
       <Title> The Super Quiz </Title>
-      <Score>0 🍕</Score>
+      <Score>
+        0 <Coin />
+      </Score>
     </HeaderContainer>
   );
 };
@@ -30,7 +35,14 @@ const Title = styled.h1`
 `;
 
 const Score = styled.h2`
+  align-items: center;
   color: ${color.offWhite};
+  display: flex;
   font-weight: 600;
   font-size: 1.8rem;
+
+  & svg {
+    height: 3rem;
+    margin-left: 5px;
+  }
 `;
