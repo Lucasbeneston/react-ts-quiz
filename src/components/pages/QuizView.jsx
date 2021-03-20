@@ -8,8 +8,6 @@ import color from "../../styles/variables";
 import QuestionCard from "../organisms/QuestionCard";
 import ListCategories from "../molecules/ListCategories";
 import Coin from "../atoms/SVGR/Coin";
-
-// Types
 import ListCategoriesIllustration from "../atoms/SVGR/ListCategoriesIllustration";
 import ButtonContainer from "../molecules/ButtonContainer";
 import RoundedButton from "../atoms/RoundedButton";
