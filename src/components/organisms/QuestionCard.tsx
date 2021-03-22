@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import color from "../../styles/variables";
 
 type Props = {
@@ -70,8 +70,21 @@ const Question = styled.p`
   margin: 20px 0;
 `;
 
+const blinking = keyframes` 
+  0% {opacity: 1;}
+  25% {opacity: 0.5;} 
+  50% {opacity: 1;}
+  75% {opacity: 0.5;}  
+  100% {opacity: 1;}
+`;
+
+const blinkingAnimation = css`
+  animation: ${blinking} 0.75s;
+`;
+
 const AnswersButton = styled.div<ButtonWrapperProps>`
   button {
+    ${({ correct }) => correct && blinkingAnimation}
     background-color: ${({ correct, userClicked }) =>
       correct
         ? color.royalBlue

@@ -6,7 +6,7 @@ Lien du repertoire : [https://github.com/Lucasbeneston/react-ts-quiz](https://gi
 
 ## Informations générales
 
-Application de React & TypeScript de Quiz sur de nombreux sujets (Animaux, Livres, Sports, etc.) avec 3 niveaux de difficulté. Les questions proviennent de l'API [https://opentdb.com/](Open Trivia Database) et sont uniquement en anglais.
+Application de React & TypeScript de Quiz sur de nombreux sujets (Animaux, Livres, Sports, etc.) avec 3 niveaux de difficulté. Les questions proviennent de l'API [https://opentdb.com/](Open Trivia Database) et sont disponibles uniquement en anglais.
 
 ## Réalisations
 
