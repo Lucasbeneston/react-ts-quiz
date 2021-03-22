@@ -12,6 +12,7 @@ import ListCategoriesIllustration from "../atoms/SVGR/ListCategoriesIllustration
 import ButtonContainer from "../molecules/ButtonContainer";
 import RoundedButton from "../atoms/RoundedButton";
 import ListLevels from "../molecules/ListLevels";
+import Loading from "../atoms/Loading";
 
 const TOTAL_QUESTIONS = 10;
 
@@ -78,7 +79,7 @@ const QuestionsQuiz = () => {
 
   return (
     <QuizContainer>
-      {loading && <p>Loading questions ...</p>}
+      {loading && <Loading />}
 
       {!loading && !gameOver && (
         <>
