@@ -7,7 +7,10 @@ const Footer = () => {
   return (
     <FooterSection>
       <Copyright>
-        Made with <Heart /> by Lucas BENESTON
+        Made with <Heart /> by{" "}
+        <Link href="https://www.linkedin.com/in/beneston-lucas/">
+          Lucas BENESTON
+        </Link>
       </Copyright>
     </FooterSection>
   );
@@ -29,4 +32,11 @@ const Copyright = styled.p`
   & svg {
     height: 1rem;
   }
+`;
+
+const Link = styled.a`
+  border-bottom: 1px solid ${color.extraLightGrey};
+  color: ${color.offWhite};
+  padding-bottom: 3px;
+  text-decoration: none;
 `;
