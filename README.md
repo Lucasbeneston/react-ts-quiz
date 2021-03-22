@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# Projet "The Super Quiz ! (TypeScript & React)"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Lien du projet :
 
-## Available Scripts
+Lien du repertoire : [https://github.com/Lucasbeneston/react-ts-quiz](https://github.com/Lucasbeneston/react-ts-quiz)
 
-In the project directory, you can run:
+## Informations générales
 
-### `npm start`
+Application de React & TypeScript de Quiz sur de nombreux sujets (Animaux, Livres, Sports, etc.) avec 3 niveaux de difficulté. Les questions proviennent de l'API [https://opentdb.com/](Open Trivia Database) et sont uniquement en anglais.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Réalisations
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Liste des réalisations :
 
-### `npm test`
+- **Maquettage** mobile, tablet et desktop.
+- **Intégration** « Mobile first ».
+- **Responsive** tablet, laptop et desktop.
+- **Génération aléatoire de questions** depuis l'API Open Trivia Database.
+- **Stockage des informations du jeu** dans le localStorage (score, difficulté et catégorie).
+- **Sélection** de la difficulté et de la catégorie.
+- **Création** d'une page pour les erreurs d'URL.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+Liste (non exhaustive) des technologies et packages utilisés :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [React](https://www.npmjs.com/package/react) : v 17.0.1
+- [TypeScript](https://www.typescriptlang.org/) : v 4.2.3
+- [Node](https://nodejs.org/en/) : v 14.15.1
+- [Styled-components](https://styled-components.com/) : v 5.2.1
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) : v 5.2.0
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Démarrer le projet
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Dans un terminal, exécuter ces lignes :
 
-### `npm run eject`
+`$ git clone https://github.com/Lucasbeneston/react-ts-quiz`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`$ cd ../path/to/the/file`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`$ npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+`$ npm start`
