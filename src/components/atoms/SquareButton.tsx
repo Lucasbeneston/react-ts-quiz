@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import color from "../../styles/variables";
+import device from "../../styles/breakpoints";
 
 type Props = {
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -37,6 +38,21 @@ const Container = styled.div`
   position: relative;
   min-width: 30%;
   max-width: 30%;
+
+  @media ${device.tablet} {
+    min-width: 20%;
+    max-width: 20%;
+  }
+
+  @media ${device.tablet} {
+    min-width: 15%;
+    max-width: 15%;
+  }
+
+  @media ${device.desktop} {
+    min-width: 12.5%;
+    max-width: 12.5%;
+  }
 
   &:after {
     content: "";

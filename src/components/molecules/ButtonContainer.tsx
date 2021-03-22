@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import device from "../../styles/breakpoints";
 
 // Components
 import StartButton from "../atoms/StartButton";
@@ -31,7 +32,16 @@ const Container = styled.div<OptionProps>`
   left: 10%;
   position: absolute;
   width: 80%;
-
   ${({ optionIsHere }) =>
     optionIsHere && "& > * { &:first-child {margin-right: 10px;}}"};
+
+  @media ${device.tablet} {
+    left: 20%;
+    width: 60%;
+  }
+
+  @media ${device.desktop} {
+    left: 25%;
+    width: 50%;
+  }
 `;

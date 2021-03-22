@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import GameInformationsContext from "../../contexts/InformationsGameContext";
 import styled from "styled-components";
 import color from "../../styles/variables";
+import device from "../../styles/breakpoints";
 
 // Components
 import AllCoins from "../atoms/SVGR/AllCoins";
@@ -30,6 +31,10 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media ${device.laptop} {
+    padding: 0 25%;
+  }
 `;
 
 const Title = styled.h1`

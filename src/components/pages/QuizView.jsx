@@ -3,6 +3,7 @@ import { fetchQuizQuestions } from "../../API";
 import GameInformationsContext from "../../contexts/InformationsGameContext";
 import styled from "styled-components";
 import color from "../../styles/variables";
+import device from "../../styles/breakpoints";
 
 // Components
 import QuestionCard from "../organisms/QuestionCard";
@@ -19,7 +20,6 @@ const TOTAL_QUESTIONS = 10;
 const QuestionsQuiz = () => {
   const context = useContext(GameInformationsContext);
   const { gameInformations, setGameInformations } = context;
-
   const [loading, setLoading] = useState(false);
   const [currentCategory, setCurrentCategory] = useState("");
   const [currentDifficulty, setCurrentDifficulty] = useState("easy");
@@ -155,6 +155,10 @@ const QuizContainer = styled.div`
   margin: 0 7.5%;
   padding: 5%;
   position: relative;
+
+  @media ${device.laptop} {
+    margin: 0 20%;
+  }
 `;
 
 const QuestionValue = styled.span`
