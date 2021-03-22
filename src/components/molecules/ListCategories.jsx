@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import GameInformationsContext from "../../contexts/InformationsGameContext";
 import styled from "styled-components";
 import device from "../../styles/breakpoints";
 
@@ -8,23 +9,27 @@ import data from "../../mocks/categories.json";
 // Components
 import SquareButton from "../atoms/SquareButton";
 
-type Props = {
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
+const ListCategories = () => {
+  const context = useContext(GameInformationsContext);
+  const { gameInformations, setGameInformations } = context;
 
-const ListCategories: React.FC<Props> = ({ onClick }) => {
   return (
     <>
       <Title>... and a gategory</Title>
       <ListContainer>
-        {data.map((category: any, index: number) => (
+        {data.map((category) => (
           <SquareButton
-            onClick={onClick}
+            onClick={(e) => {
+              setGameInformations({
+                ...gameInformations,
+                category: e.currentTarget.value,
+              });
+            }}
             key={category.name}
             title={category.name}
             icon={category.icon}
             value={category.id}
-            isSelected={index === 0}
+            isSelected={category.id === gameInformations.category}
           />
         ))}
       </ListContainer>

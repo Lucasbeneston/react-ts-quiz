@@ -1,28 +1,38 @@
-import React from "react";
-import data from "../../mocks/levels.json";
+import React, { useContext } from "react";
+import GameInformationsContext from "../../contexts/InformationsGameContext";
 import styled from "styled-components";
 import device from "../../styles/breakpoints";
+
+// Data
+import data from "../../mocks/levels.json";
 
 // Components
 import SquareButton from "../atoms/SquareButton";
 
-type Props = {
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
+const ListLevels = () => {
+  const context = useContext(GameInformationsContext);
+  const { gameInformations, setGameInformations } = context;
 
-const ListLevels: React.FC<Props> = ({ onClick }) => {
   return (
     <>
       <Title>Choose the difficulty</Title>
       <ListContainer>
-        {data.map((level: any, index: number) => (
+        {data.map((level) => (
           <SquareButton
-            onClick={onClick}
+            onClick={(e) => {
+              setGameInformations({
+                ...gameInformations,
+                difficulty: e.currentTarget.value,
+              });
+            }}
             key={level.difficulty}
             title={level.difficulty}
             icon={level.icon}
             value={level.difficulty.toLowerCase()}
-            isSelected={index === 0}
+            isSelected={
+              level.difficulty.toLocaleLowerCase() ===
+              gameInformations.difficulty
+            }
           />
         ))}
       </ListContainer>

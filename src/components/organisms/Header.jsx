@@ -15,7 +15,7 @@ const Header = () => {
     <HeaderContainer>
       <Title> The Super Quiz </Title>
       <Score>
-        {gameInformations} <AllCoins />
+        {gameInformations.score} <AllCoins />
       </Score>
     </HeaderContainer>
   );

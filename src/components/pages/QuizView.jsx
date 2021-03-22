@@ -21,8 +21,7 @@ const QuestionsQuiz = () => {
   const context = useContext(GameInformationsContext);
   const { gameInformations, setGameInformations } = context;
   const [loading, setLoading] = useState(false);
-  const [currentCategory, setCurrentCategory] = useState("");
-  const [currentDifficulty, setCurrentDifficulty] = useState("easy");
+
   const [questions, setQuestions] = useState([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
@@ -33,8 +32,8 @@ const QuestionsQuiz = () => {
     setGameOver(false);
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
-      currentCategory,
-      currentDifficulty
+      gameInformations.category,
+      gameInformations.difficulty
     );
     setQuestions(newQuestions);
     setUserAnswers([]);
@@ -46,12 +45,21 @@ const QuestionsQuiz = () => {
     if (!gameOver) {
       const answer = e.currentTarget.value;
       const correct = questions[number].correct_answer === answer;
-      if (correct && currentDifficulty === "easy") {
-        setGameInformations(gameInformations + 1);
-      } else if (correct && currentDifficulty === "medium") {
-        setGameInformations(gameInformations + 2);
-      } else if (correct && currentDifficulty === "hard") {
-        setGameInformations(gameInformations + 3);
+      if (correct && gameInformations.difficulty === "easy") {
+        setGameInformations({
+          ...gameInformations,
+          score: gameInformations.score + 1,
+        });
+      } else if (correct && gameInformations.difficulty === "medium") {
+        setGameInformations({
+          ...gameInformations,
+          score: gameInformations.score + 2,
+        });
+      } else if (correct && gameInformations.difficulty === "hard") {
+        setGameInformations({
+          ...gameInformations,
+          score: gameInformations.score + 3,
+        });
       }
       const AnswerObject = {
         question: questions[number].question,
@@ -84,9 +92,9 @@ const QuestionsQuiz = () => {
       {!loading && !gameOver && (
         <>
           <QuestionValue>
-            {currentDifficulty === "easy"
+            {gameInformations.difficulty === "easy"
               ? "1"
-              : currentDifficulty === "medium"
+              : gameInformations.difficulty === "medium"
               ? "2"
               : "3"}
             <Coin />
@@ -127,16 +135,8 @@ const QuestionsQuiz = () => {
       {gameOver && userAnswers.length === 0 ? (
         <>
           <ScrollContainer>
-            <ListLevels
-              onClick={(e) => {
-                setCurrentDifficulty(e.currentTarget.value);
-              }}
-            />
-            <ListCategories
-              onClick={(e) => {
-                setCurrentCategory(e.currentTarget.value);
-              }}
-            />
+            <ListLevels />
+            <ListCategories />
           </ScrollContainer>
           <ButtonContainer title="Start quiz now" onClick={startQuiz} />
         </>
@@ -167,6 +167,10 @@ const QuestionValue = styled.span`
   font-size: 1.8rem;
   position: absolute;
   right: 5%;
+
+  @media ${device.laptop} {
+    right: 8%;
+  }
 
   & svg {
     height: 2.4rem;

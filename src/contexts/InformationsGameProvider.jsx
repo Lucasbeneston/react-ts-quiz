@@ -4,7 +4,14 @@ import useLocalStorage from "../customHooks/useLocalStorage";
 import InformationsGameContext from "./InformationsGameContext";
 
 export default function InformationsGameProvider({ children }) {
-  const [gameInformations, setGameInformations] = useLocalStorage("score", 0);
+  const [gameInformations, setGameInformations] = useLocalStorage(
+    "gameInformations",
+    {
+      score: 0,
+      difficulty: "easy",
+      category: "",
+    }
+  );
 
   useEffect(() => {
     setGameInformations(gameInformations);
